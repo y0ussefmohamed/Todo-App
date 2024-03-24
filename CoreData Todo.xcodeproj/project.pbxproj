@@ -166,8 +166,8 @@
 		865327CB2BAE78FE00FB7231 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
-				865327D12BAE7CAB00FB7231 /* CoreDataViewModel.swift */,
 				86ECDD372BB0BB7D00AF087B /* CoreDataManager.swift */,
+				865327D12BAE7CAB00FB7231 /* CoreDataViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
