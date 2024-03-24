@@ -1,6 +1,7 @@
 import SwiftUI
 
-struct HomeView: View {
+struct HomeView: View 
+{
     @ObservedObject var viewModel = CoreDataViewModel.shared
     @State var showAddTaskViewSheet: Bool = false
     
@@ -31,6 +32,7 @@ struct HomeView: View {
                         }
                     }
                     .listRowSeparator(.hidden)
+                    .listRowBackground(.some(Color.white))
                     
                     
                 }

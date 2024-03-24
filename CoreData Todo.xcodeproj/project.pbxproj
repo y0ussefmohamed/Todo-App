@@ -18,6 +18,7 @@
 		865327D22BAE7CAB00FB7231 /* CoreDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865327D12BAE7CAB00FB7231 /* CoreDataViewModel.swift */; };
 		865327D52BAE7E1800FB7231 /* TaskCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 865327D32BAE7E1800FB7231 /* TaskCoreData.xcdatamodeld */; };
 		865327D72BAE81EE00FB7231 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865327D62BAE81EE00FB7231 /* TaskView.swift */; };
+		86ECDD382BB0BB7D00AF087B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ECDD372BB0BB7D00AF087B /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		865327D12BAE7CAB00FB7231 /* CoreDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataViewModel.swift; sourceTree = "<group>"; };
 		865327D42BAE7E1800FB7231 /* TaskCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskCoreData.xcdatamodel; sourceTree = "<group>"; };
 		865327D62BAE81EE00FB7231 /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
+		86ECDD372BB0BB7D00AF087B /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				865327D12BAE7CAB00FB7231 /* CoreDataViewModel.swift */,
+				86ECDD372BB0BB7D00AF087B /* CoreDataManager.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				8653279C2BAE782700FB7231 /* HomeView.swift in Sources */,
 				865327D72BAE81EE00FB7231 /* TaskView.swift in Sources */,
 				8653279A2BAE782700FB7231 /* CoreData_TodoApp.swift in Sources */,
+				86ECDD382BB0BB7D00AF087B /* CoreDataManager.swift in Sources */,
 				865327D02BAE7A9800FB7231 /* AddTaskView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

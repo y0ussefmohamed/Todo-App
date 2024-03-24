@@ -6,20 +6,17 @@ struct TaskView: View
     let taskIsDone: Bool
     
     var body: some View {
-        
-        HStack(spacing: 20) {
-            
+        HStack(spacing: 10) {
             Image(systemName: taskIsDone ? "checkmark.circle" : "circle")
-                .foregroundColor(taskIsDone ? .green : .primary)
+                .foregroundColor(taskIsDone ? .green : .black)
             
             Text(taskTitle)
                 .strikethrough(taskIsDone)
-            
+                .foregroundColor(taskIsDone ? .green : .black)
         }
-        
     }
 }
 
 #Preview {
-    TaskView(taskTitle: "One", taskIsDone: false)
+    TaskView(taskTitle: "First Task", taskIsDone: false)
 }

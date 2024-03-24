@@ -4,26 +4,20 @@ import CoreData
 
 class CoreDataViewModel: ObservableObject
 {
-    static let shared = CoreDataViewModel() // Singleton instance
+    // Singleton instances
+    let manager = CoreDataManager.instance
+    static let shared = CoreDataViewModel()
     
-    let container: NSPersistentContainer
     @Published var tasks: [TaskEntity] = []
     
     init() {
-        container = NSPersistentContainer(name: "TaskCoreData")
-        container.loadPersistentStores { description, error in
-            if let error = error {
-                print("DEBUG: Error Loading Core Data Error -> \(error) \nIn init()")
-            }
-        }
-        
         readTasksFromDatabase()
     }
     
     
     func saveTasks() {
         do {
-            try container.viewContext.save()
+            try manager.container.viewContext.save()
             readTasksFromDatabase()
         } catch {
             print("DEBUG: Error Saving Core Data Error -> \(error) \nIn saveData() func")
@@ -31,7 +25,7 @@ class CoreDataViewModel: ObservableObject
     }
     
     func addTask(title: String) {
-        let newTask = TaskEntity(context: container.viewContext)
+        let newTask = TaskEntity(context: manager.container.viewContext)
         newTask.title = title
         
         saveTasks()
@@ -41,7 +35,7 @@ class CoreDataViewModel: ObservableObject
         let requestToGetData = NSFetchRequest<TaskEntity>(entityName: "TaskEntity")
         
         do {
-            var fetchedTasks = try container.viewContext.fetch(requestToGetData)
+            var fetchedTasks = try manager.container.viewContext.fetch(requestToGetData)
             fetchedTasks.sort { !$0.isDone && $1.isDone } // Sort tasks, undone tasks first
             
             self.tasks = fetchedTasks
@@ -57,10 +51,10 @@ class CoreDataViewModel: ObservableObject
     }
     
     func deleteTask(offsets: IndexSet) {
-        offsets.map { tasks[$0] }.forEach(container.viewContext.delete)
+        offsets.map { tasks[$0] }.forEach(manager.container.viewContext.delete)
         
         do {
-            try container.viewContext.save()
+            try manager.container.viewContext.save()
         } catch {
             let nsError = error as NSError
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")

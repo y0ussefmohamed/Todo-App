@@ -12,10 +12,12 @@ struct AddTaskView: View
     @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel = CoreDataViewModel.shared
     @State var textField: String = ""
+    @State var showAlert = false
     
     var body: some View {
         ZStack {
-            Color(hue:0.086,saturation: 0.141,brightness: 0.972).ignoresSafeArea(edges: .all)
+            Color(hue:0.086,saturation: 0.141,brightness: 0.972)
+                .ignoresSafeArea(edges: .all)
             VStack {
                 HStack {
                     Text("Create a New Task")
@@ -26,7 +28,9 @@ struct AddTaskView: View
                 }
                 
                 TextField("Enter you task here...", text: $textField)
-                    .padding(12).background(.white).cornerRadius(10)
+                    .padding(12)
+                    .background(.white)
+                    .cornerRadius(10)
                     .foregroundStyle(.black)
                     .colorScheme(.light)
                     
@@ -36,6 +40,8 @@ struct AddTaskView: View
                         viewModel.addTask(title: textField)
                         textField = ""
                         dismiss()
+                    } else {
+                        showAlert = true // Show alert if text field is empty
                     }
                 } label: {
                     Text("Add Task")
@@ -44,9 +50,18 @@ struct AddTaskView: View
                         .padding()
                         .background(Color(.systemGreen))
                         .cornerRadius(20)
-                }.padding()
+                }
+                .padding()
                 Spacer()
-            }.padding()
+            }
+            .padding()
+        }
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("Empty Task"),
+                message: Text("Please enter a task before adding."),
+                dismissButton: .default(Text("Ok"))
+            )
         }
     }
 }
